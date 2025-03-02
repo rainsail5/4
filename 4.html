@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每日幸运颜色抽取</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive;
+            background-color: #F0F8FF;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            color: #333;
+            text-shadow: 2px 2px 5px #ccc;
+        }
+
+        button {
+            padding: 15px 30px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            background-color: #388E3C;
+        }
+
+        #result {
+            margin-top: 30px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #666;
+        }
+
+        #color-preview {
+            width: 150px;
+            height: 150px;
+            margin-top: 20px;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>抽取你的每日幸运颜色啦！</h1>
+    <button onclick="drawColor()">抽取幸运颜色</button>
+    <div id="result"></div>
+    <div id="color-preview"></div>
+
+    <script>
+        const colors = ['red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'violet'];
+
+        function drawColor() {
+            const randomIndex = Math.floor(Math.random() * colors.length);
+            const luckyColor = colors[randomIndex];
+            document.getElementById('result').textContent = `你的每日幸运颜色是：${luckyColor}`;
+            document.getElementById('color-preview').style.backgroundColor = luckyColor;
+        }
+    </script>
+
+</body>
+
+</html>
