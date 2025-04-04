@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIDI Player</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('0.jpg');
+            background-size: cover;
+            background-position: center;
+            transition: background 0.5s ease;
+        }
+
+       .star {
+            font-size: 100px;
+            color: #ffd700;
+            cursor: pointer;
+            text-shadow: 0 0 20px #ffd700;
+            animation: glow 1.5s infinite alternate;
+            transition: transform 0.5s ease;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #ffd700;
+            }
+            to {
+                text-shadow: 0 0 30px #ffd700;
+            }
+        }
+
+       .star.rotate {
+            animation: rotate 2s linear infinite;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+       .enhanced {
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('background.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+
+<body>
+    <i class="star fa-solid fa-star"></i>
+    <audio id="midiAudio" src="xiaoxingxing.mp3"></audio>
+    <script>
+        const star = document.querySelector('.star');
+        const audio = document.getElementById('midiAudio');
+
+        star.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                star.classList.add('rotate');
+                document.body.classList.add('enhanced');
+            } else {
+                audio.pause();
+                star.classList.remove('rotate');
+                document.body.classList.remove('enhanced');
+            }
+        });
+    </script>
+</body>
+
+</html>
+    
